@@ -9,11 +9,6 @@ public class BoorMachineFactory extends ProductFactory {
     private String merk;
     private String type;
 
-    public BoorMachineFactory(String omschrijving, String merk, String type) {
-        this.omschrijving = omschrijving;
-        this.merk = merk;
-        this.type = type;
-    }
 
     @Override
     public BoorMachine createProduct() {

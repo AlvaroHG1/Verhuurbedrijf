@@ -21,6 +21,7 @@ public class ProductDetails extends Venster {
 
     @Override
     public void laadVenster() {
+        productInventaris.voegObserverToe(this);
         toonDetails();
     }
 

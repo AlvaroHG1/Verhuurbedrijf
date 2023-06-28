@@ -28,7 +28,11 @@ public abstract class Venster implements ProductObserver {
 
     @Override
     public void alsVeranderd(Product product) {
-        System.out.println(product.getOmschrijving() + "is veranderd");
+        System.out.println("\n" + product.getOmschrijving() + " is geweizigd");
+        laadVenster();
+    }
+    public void alsToegevoegd(Product product) {
+        System.out.println( "\n nieuw product toegevoegd: " + product.getOmschrijving());
         laadVenster();
     }
 }

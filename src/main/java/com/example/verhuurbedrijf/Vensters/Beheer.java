@@ -16,6 +16,7 @@ public class Beheer extends Venster {
 
     @Override
     public void laadVenster() {
+        productInventaris.voegObserverToe(this);
         toonBeheer();
     }
 
@@ -29,15 +30,12 @@ public class Beheer extends Venster {
         int input = scanner.nextInt();
         if (input == 1){
             Venster Toevoegen = new Toevoegen(getMedewerker(), productInventaris, "boormachine");
-            productInventaris.addVenster(Toevoegen);
             Toevoegen.openVenster();
         } else if (input == 2) {
             Venster Toevoegen = new Toevoegen(getMedewerker(), productInventaris, "personenauto");
-            productInventaris.addVenster(Toevoegen);
             Toevoegen.openVenster();
         } else if (input == 3) {
             Venster Toevoegen = new Toevoegen(getMedewerker(), productInventaris, "vrachtauto");
-            productInventaris.addVenster(Toevoegen);
             Toevoegen.openVenster();
         }
         else {

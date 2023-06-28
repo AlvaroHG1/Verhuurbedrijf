@@ -2,9 +2,8 @@ package com.example.verhuurbedrijf;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 
-public abstract class Product{
+public abstract class Product implements Observable {
     String omschrijving;
     boolean verhuurd = false;
     String verhuurder;
@@ -37,10 +36,10 @@ public abstract class Product{
     public String getKlantNaam() {
         return klantNaam;
     }
-    public void addObserver(ProductObserver observer) {
+    public void voegObserverToe(ProductObserver observer) {
         observers.add(observer);
     }
-    private void notifyObservers() {
+    public void notifyObservers() {
         for (ProductObserver observer : observers) {
             observer.alsVeranderd(this);
         }

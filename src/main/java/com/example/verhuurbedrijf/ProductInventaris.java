@@ -1,10 +1,9 @@
 package com.example.verhuurbedrijf;
 
 import java.util.ArrayList;
-
-public class ProductInventaris implements ProductObserver {
-    private ArrayList<Product> producten;
-    private ArrayList<Venster> vensters;
+public class ProductInventaris implements ProductObserver{
+    private static ArrayList<Product> producten;
+    private ArrayList<ProductObserver> vensters;
 
     public ProductInventaris() {
         producten = new ArrayList<>();
@@ -12,23 +11,36 @@ public class ProductInventaris implements ProductObserver {
     }
 
     public void addProduct(Product product) {
-        product.addObserver(this);
+        product.voegObserverToe(this);
         producten.add(product);
+        notifyObservers(product);
     }
+
     public Product getProduct(int getal){
         return producten.get(getal);
     }
-    public void addVenster(Venster venster) {
-        vensters.add(venster);
-    }
-
     public ArrayList<Product> getProducten() {
         return producten;
     }
 
+    public void voegObserverToe(ProductObserver observer) {
+        vensters.add(observer);
+    }
+
+    public void notifyObservers(Product product){
+            for (ProductObserver venster : vensters) {
+                venster.alsToegevoegd(product);
+            }
+    }
+
     public void alsVeranderd(Product product) {
-        for (Venster venster : vensters) {
+        for (ProductObserver venster : vensters) {
             venster.alsVeranderd(product);
         }
     }
+
+    public void alsToegevoegd(Product product) {
+
+    }
 }
+

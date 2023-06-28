@@ -13,38 +13,35 @@ import java.util.ArrayList;
 public class VensterProcessor {
 
     public static void main(String[] args) {
-        BoorMachineFactory boorMachineFactory = new BoorMachineFactory("","","");
-        PersonenAutoFactory personenAutoFactory = new PersonenAutoFactory("", "", 0, 0);
-        VrachtAutoFactory vrachtAutoFactory = new VrachtAutoFactory("", 0, 0);
 
-        BoorMachine boorMachine = boorMachineFactory.createProduct();
+        BoorMachine boorMachine = ProductFactory.Boor.createProduct();
         boorMachine.setOmschrijving("Boormachine accu");
         boorMachine.setMerk("Bosch");
         boorMachine.setType("Klein");
 
-        BoorMachine boorMachine2 = boorMachineFactory.createProduct();
+        BoorMachine boorMachine2 = ProductFactory.Boor.createProduct();
         boorMachine2.setOmschrijving("Boormachine draad");
         boorMachine2.setMerk("Panasonic");
         boorMachine2.setType("Groot");
 
-        PersonenAuto personenAuto = personenAutoFactory.createProduct();
+        PersonenAuto personenAuto = ProductFactory.PersonenAuto.createProduct();
         personenAuto.setOmschrijving("PersonenAuto 2 deurs");
         personenAuto.setMerk("Honda");
         personenAuto.setGewicht(3000);
         personenAuto.setMotorInhoud(100);
 
-        PersonenAuto personenAuto2 = personenAutoFactory.createProduct();
+        PersonenAuto personenAuto2 = ProductFactory.PersonenAuto.createProduct();
         personenAuto2.setOmschrijving("PersonenAuto 4 deurs");
         personenAuto2.setMerk("Kia");
         personenAuto2.setGewicht(5000);
         personenAuto2.setMotorInhoud(150);
 
-        VrachtAuto vrachtAuto = vrachtAutoFactory.createProduct();
+        VrachtAuto vrachtAuto = ProductFactory.Vrachtauto.createProduct();
         vrachtAuto.setOmschrijving("Scania");
         vrachtAuto.setLaadVermogen(10000);
         vrachtAuto.setMotorInhoud(300);
 
-        VrachtAuto vrachtAuto2 = vrachtAutoFactory.createProduct();
+        VrachtAuto vrachtAuto2 = ProductFactory.Vrachtauto.createProduct();
         vrachtAuto2.setOmschrijving("Mercedes");
         vrachtAuto2.setLaadVermogen(15000);
         vrachtAuto2.setMotorInhoud(350);
@@ -58,7 +55,7 @@ public class VensterProcessor {
         productInventaris.addProduct(vrachtAuto2);
 
         Venster Menu = new Menu("Michael", productInventaris);
-        productInventaris.addVenster(Menu);
+        productInventaris.voegObserverToe(Menu);
         Menu.openVenster();
     }
 }

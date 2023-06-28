@@ -17,6 +17,7 @@ public class Menu extends Venster{
 
     @Override
     public void laadVenster() {
+        productInventaris.voegObserverToe(this);
         Scanner scanner = new Scanner(System.in);
         System.out.println("Je bent nu in venster Menu");
         System.out.println("Waar wil je heen");
@@ -25,12 +26,10 @@ public class Menu extends Venster{
         int input = scanner.nextInt();
         if (input == 1){
             Venster Overzicht = new Overzicht(getMedewerker(), productInventaris);
-            productInventaris.addVenster(Overzicht);
             Overzicht.openVenster();
         }
         else {
             Venster Beheer = new Beheer(getMedewerker(), productInventaris);
-            productInventaris.addVenster(Beheer);
             Beheer.openVenster();
         }
     }

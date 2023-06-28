@@ -9,11 +9,6 @@ public class VrachtAutoFactory extends ProductFactory {
     int laadVermogen;
     int motorInhoud;
 
-    public VrachtAutoFactory(String omschrijving, int laadVermogen, int motorInhoud) {
-        this.omschrijving = omschrijving;
-        this.laadVermogen = laadVermogen;
-        this.motorInhoud = motorInhoud;
-    }
     @Override
     public VrachtAuto createProduct() {
         return new VrachtAuto(omschrijving, laadVermogen, motorInhoud);

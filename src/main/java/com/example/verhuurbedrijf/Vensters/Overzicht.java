@@ -17,6 +17,7 @@ public class Overzicht extends Venster{
 
     @Override
     public void laadVenster() {
+        productInventaris.voegObserverToe(this);
         System.out.println("je bent nu in venster overzicht");
         toonOverzicht();
     }
@@ -40,13 +41,13 @@ public class Overzicht extends Venster{
         }
         else {
             Venster ProductDetails = new ProductDetails(getMedewerker(), productInventaris.getProduct(keuze - 1), productInventaris);
-            productInventaris.addVenster(ProductDetails);
             ProductDetails.openVenster();
         }
     }
     @Override
     public void sluitVenster() {
-        super.sluitVenster();
+        Venster Menu = new Menu("Michael", productInventaris);
+        Menu.openVenster();
     }
 
 

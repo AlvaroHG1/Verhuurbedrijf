@@ -1,6 +1,5 @@
 package com.example.verhuurbedrijf.Vensters;
 
-import com.example.verhuurbedrijf.Product;
 import com.example.verhuurbedrijf.ProductFactory;
 import com.example.verhuurbedrijf.ProductInventaris;
 import com.example.verhuurbedrijf.Venster;
@@ -25,14 +24,13 @@ public class Toevoegen extends Venster {
 
     @Override
     public void laadVenster() {
+        productInventaris.voegObserverToe(this);
         System.out.println("Product toevoegen:");
         voegProductToe();
     }
 
     void voegProductToe(){
-        BoorMachineFactory boorMachineFactory;
-        PersonenAutoFactory personenAutoFactory;
-        VrachtAutoFactory vrachtAutoFactory;
+
         if (productSoort.equals("boormachine")) {
             System.out.println("Boormachine");
             System.out.print("Omschrijving: ");
@@ -41,8 +39,7 @@ public class Toevoegen extends Venster {
             String merk = scanner.nextLine();
             System.out.print("Type: ");
             String type = scanner.nextLine();
-            boorMachineFactory = new BoorMachineFactory(productSoort, merk,type);
-            BoorMachine nieuweBoormachine = boorMachineFactory.createProduct();
+            BoorMachine nieuweBoormachine = ProductFactory.Boor.createProduct();
             nieuweBoormachine.setOmschrijving(omschrijving);
             nieuweBoormachine.setMerk(merk);
             nieuweBoormachine.setType(type);
@@ -57,8 +54,7 @@ public class Toevoegen extends Venster {
             int gewicht = scanner.nextInt();
             System.out.print("Motorinhoud in cc: ");
             int motorInhoud = scanner.nextInt();
-            personenAutoFactory = new PersonenAutoFactory("", "", 0, 0);
-            PersonenAuto nieuwePersonenAuto = personenAutoFactory.createProduct();
+            PersonenAuto nieuwePersonenAuto = ProductFactory.PersonenAuto.createProduct();
             nieuwePersonenAuto.setOmschrijving(omschrijving);
             nieuwePersonenAuto.setMerk(merk);
             nieuwePersonenAuto.setGewicht(gewicht);
@@ -71,11 +67,10 @@ public class Toevoegen extends Venster {
             int laadvermogen = scanner.nextInt();
             System.out.print("Motorinhoud in cc: ");
             int motorInhoud = scanner.nextInt();
-            vrachtAutoFactory = new VrachtAutoFactory("", 0, 0);
-            VrachtAuto vrachtAuto = vrachtAutoFactory.createProduct();
-            vrachtAuto.setOmschrijving(omschrijving);
-            vrachtAuto.setLaadVermogen(laadvermogen);
-            vrachtAuto.setMotorInhoud(motorInhoud);
+            VrachtAuto nieuweVrachtAuto = ProductFactory.Vrachtauto.createProduct();
+            nieuweVrachtAuto.setOmschrijving(omschrijving);
+            nieuweVrachtAuto.setLaadVermogen(laadvermogen);
+            nieuweVrachtAuto.setMotorInhoud(motorInhoud);
         }
         System.out.println("Succesvol toegevoegd");
         sluitVenster();
@@ -84,7 +79,6 @@ public class Toevoegen extends Venster {
     @Override
     public void sluitVenster() {
         Venster Beheer = new Beheer(getMedewerker(), productInventaris);
-        productInventaris.addVenster(Beheer);
         Beheer.openVenster();
     }
 }

@@ -11,12 +11,6 @@ public class PersonenAutoFactory extends ProductFactory {
     int gewicht;
     int motorInhoud;
 
-    public PersonenAutoFactory(String omschrijving, String merk, int gewicht, int motorInhoud) {
-        this.omschrijving = omschrijving;
-        this.merk = merk;
-        this.gewicht = gewicht;
-        this.motorInhoud = motorInhoud;
-    }
 
     @Override
     public PersonenAuto createProduct() {
