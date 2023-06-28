@@ -20,36 +20,28 @@ public class ProductDetails extends Venster {
         getProductInventaris().voegObserverToe(this);
         toonDetails();
     }
-
     public void toonDetails() {
         System.out.println("Omschrijving: " + product.getOmschrijving() + product.toonDetails());
         System.out.println("Verhuurd: " + (product.isVerhuurd() ? "Ja" : "Nee"));
-
         if (product.isVerhuurd()) {
-            System.out.println("Verhuurder: " + product.getVerhuurder());
-            System.out.println("Klantnaam: " + product.getKlantNaam());
-            System.out.println("1. Retourneren");
+            toonRetournerenOptie();
         } else {
             System.out.println("1. Verhuren");
         }
 
-        System.out.println("2. Terug naar overzicht");
-
         int keuze = scanner.nextInt();
-        scanner.nextLine(); // Om de nieuwe regel na het getal te consumeren
+        scanner.nextLine();
 
         switch (keuze) {
             case 1:
                 if (product.isVerhuurd()) {
                     product.retourProduct();
                 } else {
-                    System.out.print("Verhuurder: " + getMedewerker());
-                    System.out.print("\nKlantnaam: ");
-                    String klantNaam = scanner.nextLine();
-                    product.verhuurProduct(getMedewerker(), klantNaam);
+                    toonVerhurenOptie();
                 }
                 break;
             case 2:
+                sluitVenster();
                 break;
             default:
                 System.out.println("Ongeldige keuze.");
@@ -57,7 +49,23 @@ public class ProductDetails extends Venster {
         }
     }
 
+    private void toonRetournerenOptie() {
+        System.out.println("Verhuurder: " + product.getVerhuurder());
+        System.out.println("Klantnaam: " + product.getKlantNaam());
+        System.out.println("1. Retourneren");
+        System.out.println("2. Venster sluiten");
+    }
+
+    private void toonVerhurenOptie() {
+        System.out.print("Verhuurder: " + getMedewerker());
+        System.out.print("\nKlantnaam: ");
+        String klantNaam = scanner.nextLine();
+        product.verhuurProduct(getMedewerker(), klantNaam);
+    }
+
     @Override
     public void sluitVenster() {
+        Venster Overzicht = new Overzicht(getMedewerker(), getProductInventaris(), scanner);
+        Overzicht.openVenster();
     }
 }
