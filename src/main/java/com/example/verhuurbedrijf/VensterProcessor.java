@@ -1,14 +1,9 @@
 package com.example.verhuurbedrijf;
 
 import com.example.verhuurbedrijf.Vensters.Menu;
-import com.example.verhuurbedrijf.factorys.BoorMachineFactory;
-import com.example.verhuurbedrijf.factorys.PersonenAutoFactory;
-import com.example.verhuurbedrijf.factorys.VrachtAutoFactory;
 import com.example.verhuurbedrijf.soorten.BoorMachine;
 import com.example.verhuurbedrijf.soorten.PersonenAuto;
 import com.example.verhuurbedrijf.soorten.VrachtAuto;
-
-import java.util.ArrayList;
 
 public class VensterProcessor {
 
