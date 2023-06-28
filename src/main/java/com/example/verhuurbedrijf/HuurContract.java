@@ -10,25 +10,16 @@ public class HuurContract {
 
     public void verhuur(Product product) {
         product.setContract(this);
+        product.setVerhuurd(true);
         System.out.println("Het product is verhuurd aan " + klantNaam + ".");
-        product.notifyObservers();
-    }
-
-    public String getVerhuurder() {
-        return verhuurder;
-    }
-
-    public void setVerhuurder(String verhuurder) {
-        this.verhuurder = verhuurder;
+        product.notifyObservers(product);
     }
 
     public String getKlantNaam() {
         return klantNaam;
     }
 
-    public void setKlantNaam(String klantNaam) {
-        this.klantNaam = klantNaam;
+    public String getVerhuurder() {
+        return verhuurder;
     }
-
-// Getters en setters voor verhuurder en klantNaam...
 }

@@ -22,6 +22,6 @@ public class BoorMachine extends Product {
 
     @Override
     public String toonDetails() {
-        return " Merk: "+ merk + " Type: " + type;
+        return "\nMerk: "+ merk + "\nType: " + type;
     }
 }

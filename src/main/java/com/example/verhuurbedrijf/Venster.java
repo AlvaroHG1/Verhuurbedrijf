@@ -14,9 +14,14 @@ public abstract class Venster implements ProductObserver {
     }
 
     public void openVenster(){
+        clearVenster();
         toonMedewerker();
         laadVenster();
         sluitVenster();
+    }
+
+    private void clearVenster() {
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     }
 
     public ProductInventaris getProductInventaris() {
@@ -28,12 +33,9 @@ public abstract class Venster implements ProductObserver {
     }
 
     public  void toonMedewerker(){
-        System.out.println("Deze medewerker is ingelogd: " + medewerker);
+        System.out.println("Ingelogd: " + medewerker+ "\n");
     }
     public abstract void laadVenster();
-
-    public abstract void sluitVenster();
-
     public void alsVeranderd(Product product) {
         System.out.println("\n" + product.getOmschrijving() + " is geweizigd");
         laadVenster();
@@ -42,4 +44,8 @@ public abstract class Venster implements ProductObserver {
         System.out.println( "\n nieuw product toegevoegd: " + product.getOmschrijving());
         laadVenster();
     }
+    public abstract void sluitVenster();
 }
+
+
+

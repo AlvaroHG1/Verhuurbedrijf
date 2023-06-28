@@ -4,5 +4,5 @@ public interface Observable {
 
     void voegObserverToe(ProductObserver observer);
 
-    void notifyObservers();
+    void notifyObservers(Product product);
 }

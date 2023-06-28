@@ -19,19 +19,12 @@ public abstract class Product implements Observable {
     }
 
     public abstract String toonDetails();
-
-    public void setContract(HuurContract contract) {
-        this.contract = contract;
-    }
-
+    public void setContract(HuurContract contract) {this.contract = contract;}
     public String getOmschrijving() {
         return omschrijving;
     }
-
-    public HuurContract getContract() {
-        return contract;
-    }
-
+    public HuurContract getContract() {return contract;}
+    public void setVerhuurd(boolean verhuurd) {this.verhuurd = verhuurd;}
     public boolean isVerhuurd() {
         return verhuurd;
     }
@@ -40,9 +33,9 @@ public abstract class Product implements Observable {
         observers.add(observer);
     }
 
-    public void notifyObservers() {
+    public void notifyObservers(Product product) {
         for (ProductObserver observer : observers) {
-            observer.alsVeranderd(this);
+            observer.alsVeranderd(product);
         }
     }
 
@@ -60,7 +53,7 @@ public abstract class Product implements Observable {
             this.verhuurd = false;
             this.contract = null;
             System.out.println("Het product is retour genomen.");
-            notifyObservers();
+            notifyObservers(this);
         } else {
             System.out.println("Het product is niet verhuurd.");
         }

@@ -22,6 +22,6 @@ public class VrachtAuto extends Product {
 
     @Override
     public String toonDetails() {
-        return" Laadvermogen: "+ laadVermogen + " Motorinhoud: " + motorInhoud;
+        return"\nLaadvermogen: "+ laadVermogen + "\nMotorinhoud: " + motorInhoud;
     }
 }

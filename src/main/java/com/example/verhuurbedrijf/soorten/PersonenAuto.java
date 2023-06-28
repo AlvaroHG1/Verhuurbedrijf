@@ -28,6 +28,6 @@ public class PersonenAuto extends Product {
 
     @Override
     public String toonDetails() {
-        return " Merk: "+ merk + " Gewicht: " + gewicht + " Motorinhoud: " + motorInhoud;
+        return "\nMerk: "+ merk + "\nGewicht: " + gewicht + "\nMotorinhoud: " + motorInhoud;
     }
 }

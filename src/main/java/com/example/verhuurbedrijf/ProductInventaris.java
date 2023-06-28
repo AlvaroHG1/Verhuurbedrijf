@@ -1,7 +1,7 @@
 package com.example.verhuurbedrijf;
 
 import java.util.ArrayList;
-public class ProductInventaris implements ProductObserver{
+public class ProductInventaris implements ProductObserver, Observable{
     private ArrayList<Product> producten;
     private ArrayList<ProductObserver> vensters;
 

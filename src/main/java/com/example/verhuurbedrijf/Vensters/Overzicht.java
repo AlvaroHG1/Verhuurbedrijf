@@ -27,8 +27,8 @@ public class Overzicht extends Venster{
             System.out.println("-----------------------------------");
             productNummer++;
         }
-        System.out.println(productNummer +". Sluit venster");
-        System.out.println("kies een product");
+        System.out.println(productNummer +". Sluit venster\n");
+        System.out.print("Kies voor meer details: ");
         int keuze = scanner.nextInt();
         if (keuze == productNummer){
             sluitVenster();
