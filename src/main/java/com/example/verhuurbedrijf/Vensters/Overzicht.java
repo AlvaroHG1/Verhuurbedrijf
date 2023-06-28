@@ -15,13 +15,12 @@ public class Overzicht extends Venster{
     @Override
     public void laadVenster() {
         getProductInventaris().voegObserverToe(this);
-        System.out.println("je bent nu in venster overzicht");
+        System.out.println("----- Overzicht van producten -----");
         toonOverzicht();
     }
 
     public void toonOverzicht() {
         int productNummer = 1;
-        System.out.println("----- Overzicht van producten -----");
         for (Product product : getProductInventaris().getProducten()) {
             System.out.println(productNummer + ". Omschrijving: " + product.getOmschrijving());
             System.out.println("Verhuurd: " + (product.isVerhuurd() ? "Ja" : "Nee"));
@@ -31,8 +30,7 @@ public class Overzicht extends Venster{
         System.out.println(productNummer +". Sluit venster");
         System.out.println("kies een product");
 
-        int keuze = scanner.nextInt();
-        if (keuze == productNummer){
+        if (scanner.nextInt() == productNummer){
             sluitVenster();
         }
         else {
@@ -45,6 +43,4 @@ public class Overzicht extends Venster{
         Venster Menu = new Menu("Michael", getProductInventaris(), scanner);
         Menu.openVenster();
     }
-
-
 }

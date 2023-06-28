@@ -34,7 +34,6 @@ public abstract class Venster implements ProductObserver {
 
     public abstract void sluitVenster();
 
-    @Override
     public void alsVeranderd(Product product) {
         System.out.println("\n" + product.getOmschrijving() + " is geweizigd");
         laadVenster();

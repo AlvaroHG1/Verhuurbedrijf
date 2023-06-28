@@ -12,7 +12,7 @@ public class Beheer extends Venster {
 
     @Override
     public void laadVenster() {
-        System.out.println("Je bent in het beheer venster");
+        System.out.println("----- Beheer -----");
         getProductInventaris().voegObserverToe(this);
         toonBeheer();
     }
