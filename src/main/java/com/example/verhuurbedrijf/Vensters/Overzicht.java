@@ -9,15 +9,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Overzicht extends Venster{
-    private ProductInventaris productInventaris;
+
     public Overzicht(String medewerker, ProductInventaris productInventaris) {
-        super(medewerker);
-        this.productInventaris = productInventaris;
+        super(medewerker, productInventaris);
     }
 
     @Override
     public void laadVenster() {
-        productInventaris.voegObserverToe(this);
+        getProductInventaris().voegObserverToe(this);
         System.out.println("je bent nu in venster overzicht");
         toonOverzicht();
     }
@@ -26,7 +25,7 @@ public class Overzicht extends Venster{
         Scanner scanner = new Scanner(System.in);
         int productNummer = 1;
         System.out.println("----- Overzicht van producten -----");
-        for (Product product : productInventaris.getProducten()) {
+        for (Product product : getProductInventaris().getProducten()) {
             System.out.println(productNummer + ". Omschrijving: " + product.getOmschrijving());
             System.out.println("Verhuurd: " + (product.isVerhuurd() ? "Ja" : "Nee"));
             System.out.println("-----------------------------------");
@@ -40,13 +39,13 @@ public class Overzicht extends Venster{
             sluitVenster();
         }
         else {
-            Venster ProductDetails = new ProductDetails(getMedewerker(), productInventaris.getProduct(keuze - 1), productInventaris);
+            Venster ProductDetails = new ProductDetails(getMedewerker(), getProductInventaris(), getProductInventaris().getProduct(keuze - 1));
             ProductDetails.openVenster();
         }
     }
     @Override
     public void sluitVenster() {
-        Venster Menu = new Menu("Michael", productInventaris);
+        Venster Menu = new Menu("Michael", getProductInventaris());
         Menu.openVenster();
     }
 

@@ -2,20 +2,18 @@ package com.example.verhuurbedrijf.Vensters;
 
 import com.example.verhuurbedrijf.ProductInventaris;
 import com.example.verhuurbedrijf.Venster;
-
 import java.util.Scanner;
 
 public class Beheer extends Venster {
-    ProductInventaris productInventaris;
+
     public Beheer(String medewerker, ProductInventaris productInventaris) {
-        super(medewerker);
-        this.productInventaris = productInventaris;
+        super(medewerker, productInventaris);
     }
 
     @Override
     public void laadVenster() {
         System.out.println("Je bent in het beheer venster");
-        productInventaris.voegObserverToe(this);
+        getProductInventaris().voegObserverToe(this);
         toonBeheer();
     }
 
@@ -28,13 +26,13 @@ public class Beheer extends Venster {
         System.out.println("3. Vrachtauto");
         int input = scanner.nextInt();
         if (input == 1){
-            Venster Toevoegen = new Toevoegen(getMedewerker(), productInventaris, "boormachine");
+            Venster Toevoegen = new Toevoegen(getMedewerker(), getProductInventaris(), "boormachine");
             Toevoegen.openVenster();
         } else if (input == 2) {
-            Venster Toevoegen = new Toevoegen(getMedewerker(), productInventaris, "personenauto");
+            Venster Toevoegen = new Toevoegen(getMedewerker(), getProductInventaris(), "personenauto");
             Toevoegen.openVenster();
         } else if (input == 3) {
-            Venster Toevoegen = new Toevoegen(getMedewerker(), productInventaris, "vrachtauto");
+            Venster Toevoegen = new Toevoegen(getMedewerker(), getProductInventaris(), "vrachtauto");
             Toevoegen.openVenster();
         }
         else {

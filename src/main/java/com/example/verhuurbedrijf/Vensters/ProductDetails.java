@@ -10,18 +10,16 @@ import java.util.Scanner;
 public class ProductDetails extends Venster {
     private Product product;
     private Scanner scanner;
-    private ProductInventaris productInventaris;
 
-    public ProductDetails(String medewerker, Product product, ProductInventaris productInventaris) {
-        super(medewerker);
+    public ProductDetails(String medewerker, ProductInventaris productInventaris, Product product) {
+        super(medewerker, productInventaris);
         this.product = product;
-        this.productInventaris = productInventaris;
         this.scanner = new Scanner(System.in);
     }
 
     @Override
     public void laadVenster() {
-        productInventaris.voegObserverToe(this);
+        getProductInventaris().voegObserverToe(this);
         toonDetails();
     }
 

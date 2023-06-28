@@ -2,15 +2,20 @@ package com.example.verhuurbedrijf;
 
 public abstract class Venster implements ProductObserver {
     String medewerker;
-
-    public Venster(String medewerker) {
+    ProductInventaris productInventaris;
+    public Venster(String medewerker, ProductInventaris productInventaris) {
         this.medewerker = medewerker;
+        this.productInventaris = productInventaris;
     }
 
     public void openVenster(){
         toonMedewerker();
         laadVenster();
         sluitVenster();
+    }
+
+    public ProductInventaris getProductInventaris() {
+        return productInventaris;
     }
 
     public String getMedewerker() {

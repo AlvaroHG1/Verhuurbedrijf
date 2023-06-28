@@ -1,28 +1,24 @@
 package com.example.verhuurbedrijf.Vensters;
 
-import com.example.verhuurbedrijf.Observable;
 import com.example.verhuurbedrijf.ProductFactory;
 import com.example.verhuurbedrijf.ProductInventaris;
 import com.example.verhuurbedrijf.Venster;
 import com.example.verhuurbedrijf.soorten.BoorMachine;
 import com.example.verhuurbedrijf.soorten.PersonenAuto;
 import com.example.verhuurbedrijf.soorten.VrachtAuto;
-
 import java.util.Scanner;
 
 public class Toevoegen extends Venster {
-    private ProductInventaris productInventaris;
     private String productSoort;
     Scanner scanner = new Scanner(System.in);
     public Toevoegen(String medewerker, ProductInventaris productInventaris, String productSoort) {
-        super(medewerker);
-        this.productInventaris = productInventaris;
+        super(medewerker, productInventaris);
         this.productSoort = productSoort;
     }
 
     @Override
     public void laadVenster() {
-        productInventaris.voegObserverToe(this);
+        getProductInventaris().voegObserverToe(this);
         System.out.println("Product toevoegen:");
         voegProductToe();
     }
@@ -46,7 +42,7 @@ public class Toevoegen extends Venster {
         nieuweBoormachine.setMerk(scanner.nextLine());
         System.out.print("Type: ");
         nieuweBoormachine.setType(scanner.nextLine());
-        productInventaris.addProduct(nieuweBoormachine);
+        getProductInventaris().addProduct(nieuweBoormachine);
     }
     void voegPersonenautoToe(){
         System.out.println("Personenauto");
@@ -59,7 +55,7 @@ public class Toevoegen extends Venster {
         nieuwePersonenAuto.setGewicht(scanner.nextInt());
         System.out.print("Motorinhoud in cc: ");
         nieuwePersonenAuto.setMotorInhoud(scanner.nextInt());
-        productInventaris.addProduct(nieuwePersonenAuto);
+        getProductInventaris().addProduct(nieuwePersonenAuto);
     }
     void voegVrachtautoToe(){
         System.out.println("Vrachtwagen");
@@ -70,11 +66,11 @@ public class Toevoegen extends Venster {
         nieuweVrachtAuto.setLaadVermogen(scanner.nextInt());
         System.out.print("Motorinhoud in cc: ");
         nieuweVrachtAuto.setMotorInhoud(scanner.nextInt());
-        productInventaris.addProduct(nieuweVrachtAuto);
+        getProductInventaris().addProduct(nieuweVrachtAuto);
     }
     @Override
     public void sluitVenster() {
-        Venster Beheer = new Beheer(getMedewerker(), productInventaris);
+        Venster Beheer = new Beheer(getMedewerker(), getProductInventaris());
         Beheer.openVenster();
     }
 }

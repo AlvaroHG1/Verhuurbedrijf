@@ -8,16 +8,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu extends Venster{
-    private ProductInventaris productInventaris;
 
     public Menu(String medewerker, ProductInventaris productInventaris) {
-        super(medewerker);
-        this.productInventaris = productInventaris;
+        super(medewerker, productInventaris);
     }
 
     @Override
     public void laadVenster() {
-        productInventaris.voegObserverToe(this);
+        getProductInventaris().voegObserverToe(this);
         Scanner scanner = new Scanner(System.in);
         System.out.println("Je bent nu in venster Menu");
         System.out.println("Waar wil je heen");
@@ -25,11 +23,11 @@ public class Menu extends Venster{
         System.out.println("2. Toevoegen");
         int input = scanner.nextInt();
         if (input == 1){
-            Venster Overzicht = new Overzicht(getMedewerker(), productInventaris);
+            Venster Overzicht = new Overzicht(getMedewerker(), getProductInventaris());
             Overzicht.openVenster();
         }
         else {
-            Venster Beheer = new Beheer(getMedewerker(), productInventaris);
+            Venster Beheer = new Beheer(getMedewerker(), getProductInventaris());
             Beheer.openVenster();
         }
     }
