@@ -2,7 +2,7 @@ package com.example.verhuurbedrijf;
 
 import java.util.ArrayList;
 public class ProductInventaris implements ProductObserver{
-    private static ArrayList<Product> producten;
+    private ArrayList<Product> producten;
     private ArrayList<ProductObserver> vensters;
 
     public ProductInventaris() {

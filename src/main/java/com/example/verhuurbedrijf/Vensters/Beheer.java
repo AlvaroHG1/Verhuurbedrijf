@@ -1,14 +1,12 @@
 package com.example.verhuurbedrijf.Vensters;
 
-import com.example.verhuurbedrijf.ProductFactory;
 import com.example.verhuurbedrijf.ProductInventaris;
 import com.example.verhuurbedrijf.Venster;
-import com.example.verhuurbedrijf.factorys.BoorMachineFactory;
 
 import java.util.Scanner;
 
 public class Beheer extends Venster {
-    private ProductInventaris productInventaris;
+    ProductInventaris productInventaris;
     public Beheer(String medewerker, ProductInventaris productInventaris) {
         super(medewerker);
         this.productInventaris = productInventaris;
@@ -16,13 +14,14 @@ public class Beheer extends Venster {
 
     @Override
     public void laadVenster() {
+        System.out.println("Je bent in het beheer venster");
         productInventaris.voegObserverToe(this);
         toonBeheer();
     }
 
     public void toonBeheer(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Je bent in het beheer venster");
+
         System.out.println("Welk soort product wilt u toevoegen?");
         System.out.println("1. Boormachine");
         System.out.println("2. Personenauto");
