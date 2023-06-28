@@ -6,8 +6,7 @@ import java.util.List;
 public abstract class Product implements Observable {
     String omschrijving;
     boolean verhuurd = false;
-    String verhuurder;
-    String klantNaam;
+    HuurContract contract;
     public ArrayList<ProductObserver> observers;
 
     public Product(String omschrijving) {
@@ -21,24 +20,26 @@ public abstract class Product implements Observable {
 
     public abstract String toonDetails();
 
+    public void setContract(HuurContract contract) {
+        this.contract = contract;
+    }
+
     public String getOmschrijving() {
         return omschrijving;
+    }
+
+    public HuurContract getContract() {
+        return contract;
     }
 
     public boolean isVerhuurd() {
         return verhuurd;
     }
 
-    public String getVerhuurder() {
-        return verhuurder;
-    }
-
-    public String getKlantNaam() {
-        return klantNaam;
-    }
     public void voegObserverToe(ProductObserver observer) {
         observers.add(observer);
     }
+
     public void notifyObservers() {
         for (ProductObserver observer : observers) {
             observer.alsVeranderd(this);
@@ -47,11 +48,8 @@ public abstract class Product implements Observable {
 
     public void verhuurProduct(String verhuurder, String klantNaam) {
         if (!verhuurd) {
-            this.verhuurd = true;
-            this.verhuurder = verhuurder;
-            this.klantNaam = klantNaam;
-            System.out.println("Het product is verhuurd aan " + klantNaam + ".");
-            notifyObservers();
+            HuurContract contract = new HuurContract(verhuurder, klantNaam);
+            contract.verhuur(this);
         } else {
             System.out.println("Het product is al verhuurd.");
         }
@@ -60,8 +58,7 @@ public abstract class Product implements Observable {
     public void retourProduct() {
         if (verhuurd) {
             this.verhuurd = false;
-            this.verhuurder = null;
-            this.klantNaam = null;
+            this.contract = null;
             System.out.println("Het product is retour genomen.");
             notifyObservers();
         } else {

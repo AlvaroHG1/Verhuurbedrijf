@@ -29,8 +29,8 @@ public class Overzicht extends Venster{
         }
         System.out.println(productNummer +". Sluit venster");
         System.out.println("kies een product");
-
-        if (scanner.nextInt() == productNummer){
+        int keuze = scanner.nextInt();
+        if (keuze == productNummer){
             sluitVenster();
         }
         else {
@@ -40,7 +40,7 @@ public class Overzicht extends Venster{
     }
     @Override
     public void sluitVenster() {
-        Venster Menu = new Menu("Michael", getProductInventaris(), scanner);
-        Menu.openVenster();
+        Venster menu = new Menu("Michael", getProductInventaris(), scanner);
+        menu.openVenster();
     }
 }

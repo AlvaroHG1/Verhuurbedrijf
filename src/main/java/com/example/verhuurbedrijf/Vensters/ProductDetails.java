@@ -50,8 +50,8 @@ public class ProductDetails extends Venster {
     }
 
     private void toonRetournerenOptie() {
-        System.out.println("Verhuurder: " + product.getVerhuurder());
-        System.out.println("Klantnaam: " + product.getKlantNaam());
+        System.out.println("Verhuurder: " + product.getContract().getVerhuurder());
+        System.out.println("Klantnaam: " + product.getContract().getVerhuurder());
         System.out.println("1. Retourneren");
         System.out.println("2. Venster sluiten");
     }
