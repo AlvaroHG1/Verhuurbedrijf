@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class Beheer extends Venster {
 
-    public Beheer(String medewerker, ProductInventaris productInventaris) {
-        super(medewerker, productInventaris);
+    public Beheer(String medewerker, ProductInventaris productInventaris, Scanner scanner) {
+        super(medewerker, productInventaris, scanner);
     }
 
     @Override
@@ -18,26 +18,28 @@ public class Beheer extends Venster {
     }
 
     public void toonBeheer(){
-        Scanner scanner = new Scanner(System.in);
-
         System.out.println("Welk soort product wilt u toevoegen?");
         System.out.println("1. Boormachine");
         System.out.println("2. Personenauto");
         System.out.println("3. Vrachtauto");
         int input = scanner.nextInt();
         if (input == 1){
-            Venster Toevoegen = new Toevoegen(getMedewerker(), getProductInventaris(), "boormachine");
+            Venster Toevoegen = new Toevoegen(getMedewerker(), getProductInventaris(), scanner, "boormachine");
             Toevoegen.openVenster();
         } else if (input == 2) {
-            Venster Toevoegen = new Toevoegen(getMedewerker(), getProductInventaris(), "personenauto");
+            Venster Toevoegen = new Toevoegen(getMedewerker(), getProductInventaris(), scanner,"personenauto");
             Toevoegen.openVenster();
         } else if (input == 3) {
-            Venster Toevoegen = new Toevoegen(getMedewerker(), getProductInventaris(), "vrachtauto");
+            Venster Toevoegen = new Toevoegen(getMedewerker(), getProductInventaris(),scanner, "vrachtauto");
             Toevoegen.openVenster();
         }
         else {
             System.out.println("invoer niet correct, probeer opnieuw");
             scanner.nextInt();
         }
+    }
+    @Override
+    public void sluitVenster() {
+
     }
 }

@@ -5,6 +5,8 @@ import com.example.verhuurbedrijf.soorten.BoorMachine;
 import com.example.verhuurbedrijf.soorten.PersonenAuto;
 import com.example.verhuurbedrijf.soorten.VrachtAuto;
 
+import java.util.Scanner;
+
 public class VensterProcessor {
 
     public static void main(String[] args) {
@@ -49,7 +51,8 @@ public class VensterProcessor {
         productInventaris.addProduct(vrachtAuto);
         productInventaris.addProduct(vrachtAuto2);
 
-        Venster Menu = new Menu("Michael", productInventaris);
+        Scanner scanner = new Scanner(System.in);
+        Venster Menu = new Menu("Michael", productInventaris, scanner);
         productInventaris.voegObserverToe(Menu);
         Menu.openVenster();
     }

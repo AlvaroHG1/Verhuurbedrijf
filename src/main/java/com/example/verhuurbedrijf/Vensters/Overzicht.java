@@ -2,16 +2,14 @@ package com.example.verhuurbedrijf.Vensters;
 
 import com.example.verhuurbedrijf.Product;
 import com.example.verhuurbedrijf.ProductInventaris;
-import com.example.verhuurbedrijf.ProductObserver;
 import com.example.verhuurbedrijf.Venster;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Overzicht extends Venster{
 
-    public Overzicht(String medewerker, ProductInventaris productInventaris) {
-        super(medewerker, productInventaris);
+    public Overzicht(String medewerker, ProductInventaris productInventaris, Scanner scanner) {
+        super(medewerker, productInventaris, scanner);
     }
 
     @Override
@@ -22,7 +20,6 @@ public class Overzicht extends Venster{
     }
 
     public void toonOverzicht() {
-        Scanner scanner = new Scanner(System.in);
         int productNummer = 1;
         System.out.println("----- Overzicht van producten -----");
         for (Product product : getProductInventaris().getProducten()) {
@@ -39,13 +36,13 @@ public class Overzicht extends Venster{
             sluitVenster();
         }
         else {
-            Venster ProductDetails = new ProductDetails(getMedewerker(), getProductInventaris(), getProductInventaris().getProduct(keuze - 1));
+            Venster ProductDetails = new ProductDetails(getMedewerker(), getProductInventaris(), scanner, getProductInventaris().getProduct(keuze - 1));
             ProductDetails.openVenster();
         }
     }
     @Override
     public void sluitVenster() {
-        Venster Menu = new Menu("Michael", getProductInventaris());
+        Venster Menu = new Menu("Michael", getProductInventaris(), scanner);
         Menu.openVenster();
     }
 

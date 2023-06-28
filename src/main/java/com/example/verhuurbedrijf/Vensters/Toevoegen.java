@@ -10,9 +10,8 @@ import java.util.Scanner;
 
 public class Toevoegen extends Venster {
     private String productSoort;
-    Scanner scanner = new Scanner(System.in);
-    public Toevoegen(String medewerker, ProductInventaris productInventaris, String productSoort) {
-        super(medewerker, productInventaris);
+    public Toevoegen(String medewerker, ProductInventaris productInventaris, Scanner scanner, String productSoort) {
+        super(medewerker, productInventaris, scanner);
         this.productSoort = productSoort;
     }
 
@@ -70,7 +69,7 @@ public class Toevoegen extends Venster {
     }
     @Override
     public void sluitVenster() {
-        Venster Beheer = new Beheer(getMedewerker(), getProductInventaris());
+        Venster Beheer = new Beheer(getMedewerker(), getProductInventaris(), scanner);
         Beheer.openVenster();
     }
 }

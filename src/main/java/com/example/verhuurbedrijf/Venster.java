@@ -1,11 +1,16 @@
 package com.example.verhuurbedrijf;
 
+import java.util.Scanner;
+
 public abstract class Venster implements ProductObserver {
     String medewerker;
     ProductInventaris productInventaris;
-    public Venster(String medewerker, ProductInventaris productInventaris) {
+    public Scanner scanner;
+
+    public Venster(String medewerker, ProductInventaris productInventaris, Scanner scanner) {
         this.medewerker = medewerker;
         this.productInventaris = productInventaris;
+        this.scanner = scanner;
     }
 
     public void openVenster(){
@@ -27,9 +32,7 @@ public abstract class Venster implements ProductObserver {
     }
     public abstract void laadVenster();
 
-    public void sluitVenster(){
-        System.out.println("");
-    }
+    public abstract void sluitVenster();
 
     @Override
     public void alsVeranderd(Product product) {

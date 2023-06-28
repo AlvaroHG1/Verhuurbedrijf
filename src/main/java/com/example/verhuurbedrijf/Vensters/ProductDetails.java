@@ -9,12 +9,10 @@ import java.util.Scanner;
 
 public class ProductDetails extends Venster {
     private Product product;
-    private Scanner scanner;
 
-    public ProductDetails(String medewerker, ProductInventaris productInventaris, Product product) {
-        super(medewerker, productInventaris);
+    public ProductDetails(String medewerker, ProductInventaris productInventaris, Scanner scanner, Product product) {
+        super(medewerker, productInventaris, scanner);
         this.product = product;
-        this.scanner = new Scanner(System.in);
     }
 
     @Override
@@ -61,6 +59,5 @@ public class ProductDetails extends Venster {
 
     @Override
     public void sluitVenster() {
-        super.sluitVenster();
     }
 }
